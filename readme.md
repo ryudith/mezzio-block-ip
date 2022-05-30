@@ -169,4 +169,4 @@ Detail :
 
 [API Documentation](https://github.com/ryudith/mezzio-block-ip/tree/master/docs/api/classes)
 
-[Issues or Question](https://github.com/ryudith/mezzio-simple-ip/issues)
+[Issues or Questions](https://github.com/ryudith/mezzio-block-ip/issues)
