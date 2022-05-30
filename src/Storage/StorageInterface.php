@@ -8,22 +8,50 @@ declare(strict_types=1);
 
 namespace Ryudith\MezzioBlockIp\Storage;
 
+use Psr\Http\Message\ServerRequestInterface;
+
 interface StorageInterface
 {
     /**
-     * Save record data.
+     * Set server request object reference and request IP.
      * 
-     * @param string $key Record data key for save.
-     * @param array $data Assoc array record data.
-     * @return bool Return true if success or false if fail.
+     * @param ServerRequestInterface $request Server request object.
+     * @return void
      */
-    public function save (string $key, array $data) : bool;
+    public function setRequest (ServerRequestInterface $request) : void;
 
     /**
-     * Load record data as assoc array.
+     * Check if request is in whitelist.
      * 
-     * @param string $key Record data key to load.
-     * @return array|null Return assoc array record data or null if no data.
+     * @return bool True if in whitelist else false.
      */
-    public function load (string $key) : array|null;
+    public function isWhitelist () : bool;
+
+    /**
+     * Check key is blocked IP storage or not.
+     * 
+     * @return bool Return true if key is blocked IP storage else false.
+     */
+    public function isBlacklist () : bool;
+
+    /**
+     * Check if record data already exist.
+     * 
+     * @return bool True if exist else false.
+     */
+    public function isRecordExist () : bool;
+
+    /**
+     * Intialize record data.
+     * 
+     * @return ?array 
+     */
+    public function init () : ?array;
+
+    /**
+     * Check request is still valid request based record data.
+     * 
+     * @return bool True if still valid else false.
+     */
+    public function isValid () : bool;
 }

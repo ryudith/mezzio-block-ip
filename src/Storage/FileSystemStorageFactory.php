@@ -21,6 +21,6 @@ class FileSystemStorageFactory
     {
         $config = $container->get('config')['mezzio_block_ip'];
 
-        return new FileSystemStorage($config['block_ip_data_dir'], $config['file_data_delimiter']);
+        return new FileSystemStorage($config);
     }
 }

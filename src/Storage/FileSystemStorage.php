@@ -3,7 +3,7 @@
  * Assoc key :
  * 1. hit        : Counter hit/visit
  * 2. last_visit : unixtimestamp last visit
- * 3. ip         : Additional info, request IP
+ * 3. ip         : request IP
  * 
  * @author Ryudith
  * @package Ryudith\MezzioBlockIp\Storage
@@ -12,69 +12,349 @@ declare(strict_types=1);
 
 namespace Ryudith\MezzioBlockIp\Storage;
 
+use Psr\Http\Message\ServerRequestInterface;
+
 class FileSystemStorage implements StorageInterface
 {
     /**
-     * Directory path to Block IP storage.
+     * Flag the current storage is in blacklist or not.
      * 
-     * @var string $path
+     * @var bool $isBlacklistStorage
      */
-    private string $path;
+    public bool $isBlacklistStorage = false;
 
     /**
-     * Data delimiter inside file.
-     * 
-     * @var string $delimiter
+     * Flag the current storage is in whitelist or not.
      */
-    private string $delimiter;
+    public bool $isWhitelistStorage = false;
+
+    /**
+     * Server request reference.
+     * 
+     * @var ?ServerRequestInterface $request
+     */
+    private ?ServerRequestInterface $request = null;
+
+    /**
+     * IP request.
+     * 
+     * @var ?string $ip
+     */
+    private ?string $ip = null;
+
+    /**
+     * Pre-generate key.
+     * 
+     * @var string $key
+     */
+    private string $pregenKey;
 
     /**
      * Set class properties.
      * 
-     * @param string $path
-     * @param string $delimiter
+     * @param array $config Configuration array reference.
      */
-    public function __construct(string $path, string $delimiter)
-    {
-        $this->path = $path;
-        $this->delimiter = $delimiter;
+    public function __construct(
+        /**
+         * Application 'mezzio_block_ip' configuration.
+         * 
+         * @var string $config
+         */
+        private array $config
+    ) {
+        $this->config['ip_data_dir'] = rtrim($this->config['ip_data_dir'], '/').'/';
+        $this->config['blacklist_data_dir'] = rtrim($this->config['blacklist_data_dir'], '/').'/';
+        $this->config['whitelist_data_dir'] = rtrim($this->config['whitelist_data_dir'], '/').'/';
     }
 
     /**
-     * Save record to file.
-     * 
-     * @param string $key Data record key (aka filename)
-     * @param array $data Assoc array data record
-     * @return bool True if success else false
+     * {@inheritDoc}
      */
-    public function save (string $key, array $data) : bool 
+    public function setRequest (ServerRequestInterface $request) : void 
     {
-        if (! file_exists($this->path) && ! mkdir($this->path, 0755, true)) 
+        $this->request = $request;
+        $this->ip = $this->getRequestIP();
+        $this->pregenKey = $this->generateKey($this->ip);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isWhitelist () : bool 
+    {
+        if (in_array($this->ip, $this->config['admin_whitelist_ip'], true)) 
+        {
+            return true;
+        }
+
+        $key = $this->generateKey($this->ip);
+        $dir = $this->config['whitelist_data_dir'];
+        if (file_exists($dir.$key)) 
+        {
+            $this->isWhitelistStorage = true;
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isBlacklist () : bool 
+    {
+        $filePath = $this->config['blacklist_data_dir'].$this->pregenKey;
+        if (file_exists($filePath))
+        {
+            $this->isBlacklistStorage = true;
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isRecordExist () : bool 
+    {
+        $filePath = $this->config['ip_data_dir'].$this->pregenKey;
+        if (file_exists($filePath)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function init () : ?array 
+    {
+        $data = $this->createRecordData();
+        $result = $this->saveData($this->config['ip_data_dir'].$this->pregenKey, $data, $this->config['file_data_delimiter']);
+        if ($result)
+        {
+            return $data;
+        }
+
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isValid () : bool 
+    {
+        $filePath = $this->config['ip_data_dir'].$this->pregenKey;
+        $data = $this->loadData($filePath, $this->config['file_data_delimiter']);
+        $inDuration = (time() - $data['last_visit']) < $this->config['limit_duration'];
+        $exceedLimit = $data['hit'] >= $this->config['limit_hit'];
+        if ($inDuration && $exceedLimit) 
+        {
+            $this->saveAsBlacklist($this->pregenKey);
+            $this->isBlacklistStorage = true;
+            return false;
+        }
+
+        if ($exceedLimit) 
+        {
+            $data['hit'] = 1;
+        }
+        else 
+        {
+            $data['hit'] += 1;
+        }
+        
+        $data['last_visit'] = time();
+        $this->saveData(
+            $filePath, 
+            $data, 
+            $this->config['file_data_delimiter']
+        );
+
+        return true;
+    }
+
+    /**
+     * Change or set current IP value.
+     * @param string $ip New IP value.
+     * @return void
+     */
+    public function setIP (string $ip) : void 
+    {
+        $this->ip = $ip;
+        $this->pregenKey = $this->generateKey($ip);
+    }
+
+    /**
+     * Create new data to blacklist.
+     * 
+     * @return bool Create result status.
+     */
+    public function createBlacklistRecord () : bool 
+    {
+        $filePath = $this->config['blacklist_data_dir'].$this->pregenKey;
+        $data = $this->createRecordData();
+        return $this->saveData(
+            $filePath, 
+            $data, 
+            $this->config['file_data_delimiter']
+        );
+    }
+
+    /**
+     * Delete data from blacklist.
+     * 
+     * @return bool Delete result status.
+     */
+    public function deleteBlacklistRecord () : bool 
+    {
+        $filePath = $this->config['blacklist_data_dir'].$this->pregenKey;
+        if (file_exists($filePath) && unlink($filePath)) 
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Create new data to whitelist.
+     * 
+     * @return bool Create result status.
+     */
+    public function createWhitelistRecord () : bool 
+    {
+        $filePath = $this->config['whitelist_data_dir'].$this->pregenKey;
+        $data = $this->createRecordData();
+        return $this->saveData(
+            $filePath, 
+            $data, 
+            $this->config['file_data_delimiter']
+        );
+    }
+
+    /**
+     * Delete data from whitelist.
+     * 
+     * @return bool Delete result status.
+     */
+    public function deleteWhitelistRecord () : bool 
+    {
+        $filePath = $this->config['whitelist_data_dir'].$this->pregenKey;
+        if (file_exists($filePath) && unlink($filePath)) 
+        {
+            return true;
+        }
+
+        return false;
+    }
+    
+    /**
+     * Save as record data to blacklist data.
+     * 
+     * @param string $key Key to save as blacklist data.
+     * @return bool True if process success else false.
+     */
+    private function saveAsBlacklist (string $key) : bool
+    {
+        if (! file_exists($this->config['blacklist_data_dir']) && ! mkdir($this->config['blacklist_data_dir'], 0755, true)) 
         {
             return false;
         }
 
-        $strData = $data['hit'].$this->delimiter.$data['last_visit'].$this->delimiter.$data['ip'];
-
-        return (bool) file_put_contents($this->path.'/'.$key, $strData);
+        $blockFile = $this->config['blacklist_data_dir'].$key;
+        $counterFile = $this->config['ip_data_dir'].$key;
+        return rename($counterFile, $blockFile);
     }
 
     /**
-     * Load record data from file to assoc array.
+     * Extract IP from string (without port).
      * 
-     * @param string $key 
-     * @return ?array Assoc array record data
+     * @return string String IP from request.
      */
-    public function load (string $key) : ?array 
+    private function getRequestIP () : string
     {
-        $filePath = $this->path.'/'.$key;
-        if (! file_exists($filePath))
+        $realIpKey = $this->config['request_real_ip_key'];
+        $realIp = getenv($realIpKey);
+        if ($realIp === false) 
+        {
+            $realIp = $_SERVER[$realIpKey];
+        }
+
+        $ip = explode(']:', $realIp);
+        if (count($ip) > 1) 
+        {
+            return trim($ip[0], '[');
+        }
+
+        $ip = explode(':', $realIp);
+        return $ip[0];
+    }
+
+    /**
+     * Generate hash key string.
+     * 
+     * @param string $val String data to be hash.
+     * @return string Hash string
+     */
+    private function generateKey (string $val) : string 
+    {
+        return sha1($val);
+    }
+
+    /**
+     * Generate assoc array record data.
+     * 
+     * @return array Assoc array data.
+     */
+    private function createRecordData (?string $ip = null) : array 
+    {
+        return [
+            'hit' => 1,
+            'last_visit' => time(),
+            'ip' => $ip ?? $this->ip,
+        ];
+    }
+
+    /**
+     * Actual function to save record data.
+     * 
+     * @param string $flename File name record data.
+     * @param array $data Record data to save.
+     * @param string $delimiter Delimiter data inside file.
+     * @return bool True if save data success else false.
+     */
+    private function saveData (string $filename, array $data, string $delimiter) : bool 
+    {
+        $dirPath = dirname($filename);
+        if (! file_exists($dirPath) && ! mkdir($dirPath, 0755, true)) 
+        {
+            return false;
+        }
+
+        $strData = $data['hit'].$delimiter.$data['last_visit'].$delimiter.$data['ip'];
+
+        return (bool) file_put_contents($filename, $strData);
+    }
+
+    /**
+     * Actual function to load record data.
+     * 
+     * @param string $filename File name record data.
+     * @param string $delimiter File data delimiter.
+     * @return ?array Assoc record data from file.
+     */
+    private function loadData (string $filename, string $delimiter) : ?array 
+    {
+        if (! file_exists($filename))
         {
             return null;
         }
 
-        $tmpRecord = explode($this->delimiter, file_get_contents($filePath));
-        if (count($tmpRecord) < 3) return null;
+        $tmpRecord = explode($delimiter, file_get_contents($filename));
+        if (count($tmpRecord) < 2) return null;
 
         return [
             'hit' => $tmpRecord[0],
