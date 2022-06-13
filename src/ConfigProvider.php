@@ -17,7 +17,7 @@ use Ryudith\MezzioBlockIp\Storage\FileSystemStorageFactory;
 /**
  * Config provider class.
  * 
- * Library specific configuration description (mezzio_custom_log) :
+ * Library specific configuration description (mezzio_block_ip) :
  * 1. limit_hit            : Define how many limit hit per 'limit_duration' value.
  * 2. limit_duration       : Duration for limit, value in second (default 60 or 1 minute).
  * 3. request_real_ip_key  : 

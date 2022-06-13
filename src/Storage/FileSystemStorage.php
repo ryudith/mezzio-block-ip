@@ -73,7 +73,7 @@ class FileSystemStorage implements StorageInterface
     public function setRequest (ServerRequestInterface $request) : void 
     {
         $this->request = $request;
-        $this->ip = $this->getRequestIP();
+        $this->ip = $_SERVER['REMOTE_ADDR'];
         $this->pregenKey = $this->generateKey($this->ip);
     }
 
@@ -267,30 +267,6 @@ class FileSystemStorage implements StorageInterface
         $blockFile = $this->config['blacklist_data_dir'].$key;
         $counterFile = $this->config['ip_data_dir'].$key;
         return rename($counterFile, $blockFile);
-    }
-
-    /**
-     * Extract IP from string (without port).
-     * 
-     * @return string String IP from request.
-     */
-    private function getRequestIP () : string
-    {
-        $realIpKey = $this->config['request_real_ip_key'];
-        $realIp = getenv($realIpKey);
-        if ($realIp === false) 
-        {
-            $realIp = $_SERVER[$realIpKey];
-        }
-
-        $ip = explode(']:', $realIp);
-        if (count($ip) > 1) 
-        {
-            return trim($ip[0], '[');
-        }
-
-        $ip = explode(':', $realIp);
-        return $ip[0];
     }
 
     /**
