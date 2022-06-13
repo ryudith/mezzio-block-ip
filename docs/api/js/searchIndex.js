@@ -43,7 +43,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Ryudith\\MezzioBlockIp\\ConfigProvider",
             "name": "ConfigProvider",
-            "summary": "",
+            "summary": "Config\u0020provider\u0020class.",
             "url": "classes/Ryudith-MezzioBlockIp-ConfigProvider.html"
         },                {
             "fqsen": "\\Ryudith\\MezzioBlockIp\\ConfigProvider\u003A\u003A__invoke\u0028\u0029",
@@ -195,11 +195,6 @@ Search.appendIndex(
             "name": "saveAsBlacklist",
             "summary": "Save\u0020as\u0020record\u0020data\u0020to\u0020blacklist\u0020data.",
             "url": "classes/Ryudith-MezzioBlockIp-Storage-FileSystemStorage.html#method_saveAsBlacklist"
-        },                {
-            "fqsen": "\\Ryudith\\MezzioBlockIp\\Storage\\FileSystemStorage\u003A\u003AgetRequestIP\u0028\u0029",
-            "name": "getRequestIP",
-            "summary": "Extract\u0020IP\u0020from\u0020string\u0020\u0028without\u0020port\u0029.",
-            "url": "classes/Ryudith-MezzioBlockIp-Storage-FileSystemStorage.html#method_getRequestIP"
         },                {
             "fqsen": "\\Ryudith\\MezzioBlockIp\\Storage\\FileSystemStorage\u003A\u003AgenerateKey\u0028\u0029",
             "name": "generateKey",

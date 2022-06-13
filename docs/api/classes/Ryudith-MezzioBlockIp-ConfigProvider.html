@@ -111,12 +111,34 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ConfigProvider.php"><a href="files/src-configprovider.html"><abbr title="src/ConfigProvider.php">ConfigProvider.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">18</span>
+    <span class="phpdocumentor-element-found-in__line">40</span>
 
     </aside>
 
-        
-    <section class="phpdocumentor-description"></section>
+            <p class="phpdocumentor-summary">Config provider class.</p>
+
+    <section class="phpdocumentor-description"><p>Library specific configuration description (mezzio_block_ip) :</p>
+<ol>
+<li>limit_hit            : Define how many limit hit per 'limit_duration' value.</li>
+<li>limit_duration       : Duration for limit, value in second (default 60 or 1 minute).</li>
+<li>request_real_ip_key  :</li>
+<li>ip_data_dir          : Location for block IP data counter (files) to save.</li>
+<li>blacklist_data_dir   : Location for blacklist IP data to save.</li>
+<li>whitelist_data_dir   : Location for whitelist IP data to save.</li>
+<li>file_data_delimiter  : Char or string delimiter for each data in metadata counter or blacklist or whitelist.</li>
+<li>ip_storage_class     : Class name for custom storage implementation.</li>
+<li>ip_response_class    : Class name for custom response implementation.</li>
+<li>admin_whitelist_ip  : Permanent whitelist IP for administration or testing use.</li>
+<li>enable_helper       : Flag to enable blacklist or whitelist helper.</li>
+<li>helper_url_param_op : Define field query parameter for operation helper,
+the avaiable operations is 'add' and 'delete' for both blacklist and whitelist helper.
+('op' part in 'http://localhost:8080/blockip/blacklist?op=add&amp;ip=192.168.12.12').</li>
+<li>helper_url_param_ip : Define field query parameter for IP data, the value must a valid IP data format.
+('ip' part in 'http://localhost:8080/blockip/blacklist?op=add&amp;ip=192.168.12.12').</li>
+<li>blacklist_uri_path  : URI path access for blacklist helper from browser (don't forget whitelist the IP to access this).</li>
+<li>whitelist_uri_path  : URI path access for whitelist helper from browser (don't forget whitelist the IP to access this).</li>
+</ol>
+</section>
 
 
 
@@ -164,7 +186,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ConfigProvider.php"><a href="files/src-configprovider.html"><abbr title="src/ConfigProvider.php">ConfigProvider.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 
     </aside>
 
