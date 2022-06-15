@@ -11,7 +11,6 @@ use Laminas\Diactoros\Response\TextResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Ryudith\MezzioBlockIp\Storage\FileSystemStorage;
-use Ryudith\MezzioBlockIp\Storage\StorageInterface;
 
 class BlockIPHandler 
 {
@@ -72,11 +71,11 @@ class BlockIPHandler
         $this->storage->setIP($ip);
         if ($isBlacklistUrl && $operation === 'add') 
         {
-            return $this->addBlacklist($ip);
+            return $this->addBlacklist();
         }
         else if ($isBlacklistUrl && $operation === 'delete')
         {
-            return $this->deleteBlacklist($ip);
+            return $this->deleteBlacklist();
         }
 
         //
