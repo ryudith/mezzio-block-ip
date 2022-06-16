@@ -91,11 +91,12 @@
                     <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/ryudith.html">Ryudith</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/ryudith-mezzioblockip.html">MezzioBlockIp</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/ryudith-mezzioblockip-helper.html">Helper</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    ConfigProvider
+    BlockIPCliFactory
 
     
             <div class="phpdocumentor-element__package">
@@ -109,28 +110,14 @@
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/ConfigProvider.php"><a href="files/src-configprovider.html"><abbr title="src/ConfigProvider.php">ConfigProvider.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCliFactory.php"><a href="files/src-helper-blockipclifactory.html"><abbr title="src/Helper/BlockIPCliFactory.php">BlockIPCliFactory.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">15</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Config provider class.</p>
+            <p class="phpdocumentor-summary">BlockIPCli factory class.</p>
 
-    <section class="phpdocumentor-description"><p>Library specific configuration description (mezzio_block_ip) :</p>
-<ol>
-<li>limit_hit            : Define how many limit hit per 'limit_duration' value.</li>
-<li>limit_duration       : Duration for limit, value in second (default 60 or 1 minute).</li>
-<li>request_real_ip_key  :</li>
-<li>ip_data_dir          : Location for block IP data counter (files) to save.</li>
-<li>blacklist_data_dir   : Location for blacklist IP data to save.</li>
-<li>whitelist_data_dir   : Location for whitelist IP data to save.</li>
-<li>file_data_delimiter  : Char or string delimiter for each data in metadata counter or blacklist or whitelist.</li>
-<li>ip_storage_class     : Class name for custom storage implementation.</li>
-<li>ip_response_class    : Class name for custom response implementation.</li>
-<li>admin_whitelist_ip  : Permanent whitelist IP for administration or testing use.</li>
-</ol>
-</section>
 
 
 
@@ -146,11 +133,11 @@
 
 <dl class="phpdocumentor-table-of-contents">
                         <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Ryudith-MezzioBlockIp-ConfigProvider.html#method___invoke">__invoke()</a>
+    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCliFactory.html#method___invoke">__invoke()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html"><abbr title="\Ryudith\MezzioBlockIp\Helper\BlockIPCli">BlockIPCli</abbr></a>    </span>
 </dt>
-<dd></dd>
+<dd>Factory to create BlockIPCli instance.</dd>
 
         </dl>
 
@@ -163,7 +150,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/Ryudith-MezzioBlockIp-ConfigProvider.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCliFactory.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
@@ -173,29 +160,43 @@
 >
     <h4 class="phpdocumentor-element__name" id="method___invoke">
         __invoke()
-        <a href="classes/Ryudith-MezzioBlockIp-ConfigProvider.html#method___invoke" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCliFactory.html#method___invoke" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/ConfigProvider.php"><a href="files/src-configprovider.html"><abbr title="src/ConfigProvider.php">ConfigProvider.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCliFactory.php"><a href="files/src-helper-blockipclifactory.html"><abbr title="src/Helper/BlockIPCliFactory.php">BlockIPCliFactory.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">34</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Factory to create BlockIPCli instance.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__invoke</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
-
-        <section class="phpdocumentor-description"></section>
+                    <span class="phpdocumentor-signature__name">__invoke</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Container\ContainerInterface">ContainerInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$container</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html"><abbr title="\Ryudith\MezzioBlockIp\Helper\BlockIPCli">BlockIPCli</abbr></a></span></code>
 
     
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$container</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Container\ContainerInterface">ContainerInterface</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Container reference from framework.</p>
+</section>
+
+            </dd>
+            </dl>
+
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html"><abbr title="\Ryudith\MezzioBlockIp\Helper\BlockIPCli">BlockIPCli</abbr></a></span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>BlockIPCli class instance.</p>
+</section>
+
     
 </article>
             </section>
@@ -276,7 +277,7 @@
 </section>
             </div>
         </div>
-        <a href="classes/Ryudith-MezzioBlockIp-ConfigProvider.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCliFactory.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

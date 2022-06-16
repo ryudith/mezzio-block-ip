@@ -96,8 +96,11 @@
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    BlockIPHandler
+    BlockIPCli
 
+        <span class="phpdocumentor-element__extends">
+        extends <abbr title="\Symfony\Component\Console\Command\Command">Command</abbr>
+    </span>
     
             <div class="phpdocumentor-element__package">
             in package
@@ -106,39 +109,24 @@
                             </ul>
         </div>
     
-            <span class="phpdocumentor-element__implements">
-            implements
-                            <abbr title="\Psr\Http\Server\RequestHandlerInterface">RequestHandlerInterface</abbr>                    </span>
     
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPHandler.php"><a href="files/src-helper-blockiphandler.html"><abbr title="src/Helper/BlockIPHandler.php">BlockIPHandler.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCli.php"><a href="files/src-helper-blockipcli.html"><abbr title="src/Helper/BlockIPCli.php">BlockIPCli.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">20</span>
 
     </aside>
 
-        
-    <section class="phpdocumentor-description"></section>
+            <p class="phpdocumentor-summary">Blog IP CLI helper</p>
 
 
 
 
 
 
-<h3 id="interfaces_class_traits">
-    Interfaces, Classes, Traits and Enums
-    <a href="#interfaces_class_traits" class="headerlink"><i class="fas fa-link"></i></a>
-</h3>
 
-<dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><abbr title="\Psr\Http\Server\RequestHandlerInterface">RequestHandlerInterface</abbr></dt>
-        <dd></dd>
-    
-    
-    
-    </dl>
 
 
 <h3 id="toc">
@@ -148,60 +136,95 @@
 
 <dl class="phpdocumentor-table-of-contents">
                     <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#property_config">$config</a>
+    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#property_config">$config</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd>Configuration array reference from ConfigProvider.</dd>
+<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#property_storage">$storage</a>
+    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#property_input">$input</a>
+    <span>
+                        &nbsp;: <abbr title="\Symfony\Component\Console\Input\InputInterface">InputInterface</abbr>            </span>
+</dt>
+<dd>Reference to input instance.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#property_output">$output</a>
+    <span>
+                        &nbsp;: <abbr title="\Symfony\Component\Console\Output\OutputInterface">OutputInterface</abbr>            </span>
+</dt>
+<dd>Reference to outout instance.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#property_processResultMessage">$processResultMessage</a>
+    <span>
+                        &nbsp;: string|null            </span>
+</dt>
+<dd>Detail message about process result.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#property_storage">$storage</a>
     <span>
                         &nbsp;: <a href="classes/Ryudith-MezzioBlockIp-Storage-FileSystemStorage.html"><abbr title="\Ryudith\MezzioBlockIp\Storage\FileSystemStorage">FileSystemStorage</abbr></a>            </span>
 </dt>
-<dd>Storage reference.</dd>
+<dd></dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#method___construct">__construct()</a>
+    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method___construct">__construct()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Initialize by clean &#039;blacklist_data_dir&#039; path value.</dd>
+<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#method_handle">handle()</a>
+    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_execute">execute()</a>
     <span>
-                                &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
+                                &nbsp;: int    </span>
 </dt>
-<dd>Helper in handler form to unblock IP or remove record from block list.</dd>
+<dd>Execute CLI helper.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_configure">configure()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Configure argument for CLI command.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#method_addBlacklist">addBlacklist()</a>
+    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_addBlacklist">addBlacklist()</a>
     <span>
-                                &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
+                                &nbsp;: int    </span>
 </dt>
-<dd></dd>
+<dd>Add IP to blacklist if not exists yet.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#method_addWhitelist">addWhitelist()</a>
+    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_addWhitelist">addWhitelist()</a>
     <span>
-                                &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
+                                &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>Add IP to whitelist if not exists yet.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#method_deleteBlacklist">deleteBlacklist()</a>
+    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_deleteBlacklist">deleteBlacklist()</a>
     <span>
-                                &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
+                                &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>Delete IP from blacklist.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#method_deleteWhitelist">deleteWhitelist()</a>
+    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_deleteWhitelist">deleteWhitelist()</a>
     <span>
-                                &nbsp;: <abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>    </span>
+                                &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>Delete IP from whitelist.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_help">help()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Show help information.</dd>
 
         </dl>
 
@@ -213,7 +236,7 @@
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="
@@ -224,24 +247,124 @@
 >
     <h4 class="phpdocumentor-element__name" id="property_config">
         $config
-        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#property_config" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#property_config" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPHandler.php"><a href="files/src-helper-blockiphandler.html"><abbr title="src/Helper/BlockIPHandler.php">BlockIPHandler.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCli.php"><a href="files/src-helper-blockipcli.html"><abbr title="src/Helper/BlockIPCli.php">BlockIPCli.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">29</span>
+    <span class="phpdocumentor-element-found-in__line">47</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Configuration array reference from ConfigProvider.</p>
-
+    
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$config</span>
     </code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_input">
+        $input
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#property_input" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCli.php"><a href="files/src-helper-blockipcli.html"><abbr title="src/Helper/BlockIPCli.php">BlockIPCli.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">27</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Reference to input instance.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type"><abbr title="\Symfony\Component\Console\Input\InputInterface">InputInterface</abbr></span>
+    <span class="phpdocumentor-signature__name">$input</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_output">
+        $output
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#property_output" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCli.php"><a href="files/src-helper-blockipcli.html"><abbr title="src/Helper/BlockIPCli.php">BlockIPCli.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">34</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Reference to outout instance.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type"><abbr title="\Symfony\Component\Console\Output\OutputInterface">OutputInterface</abbr></span>
+    <span class="phpdocumentor-signature__name">$output</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_processResultMessage">
+        $processResultMessage
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#property_processResultMessage" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCli.php"><a href="files/src-helper-blockipcli.html"><abbr title="src/Helper/BlockIPCli.php">BlockIPCli.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">41</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Detail message about process result.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">string|null</span>
+    <span class="phpdocumentor-signature__name">$processResultMessage</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
 
     
     
@@ -257,27 +380,28 @@
 >
     <h4 class="phpdocumentor-element__name" id="property_storage">
         $storage
-        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#property_storage" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#property_storage" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPHandler.php"><a href="files/src-helper-blockiphandler.html"><abbr title="src/Helper/BlockIPHandler.php">BlockIPHandler.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCli.php"><a href="files/src-helper-blockipcli.html"><abbr title="src/Helper/BlockIPCli.php">BlockIPCli.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">36</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Storage reference.</p>
-
+    
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type"><a href="classes/Ryudith-MezzioBlockIp-Storage-FileSystemStorage.html"><abbr title="\Ryudith\MezzioBlockIp\Storage\FileSystemStorage">FileSystemStorage</abbr></a></span>
     <span class="phpdocumentor-signature__name">$storage</span>
     </code>
 
-    
-    
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -286,7 +410,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
@@ -296,17 +420,16 @@
 >
     <h4 class="phpdocumentor-element__name" id="method___construct">
         __construct()
-        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPHandler.php"><a href="files/src-helper-blockiphandler.html"><abbr title="src/Helper/BlockIPHandler.php">BlockIPHandler.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCli.php"><a href="files/src-helper-blockipcli.html"><abbr title="src/Helper/BlockIPCli.php">BlockIPCli.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">23</span>
+    <span class="phpdocumentor-element-found-in__line">46</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Initialize by clean &#039;blacklist_data_dir&#039; path value.</p>
-
+    
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$config</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Ryudith-MezzioBlockIp-Storage-FileSystemStorage.html"><abbr title="\Ryudith\MezzioBlockIp\Storage\FileSystemStorage">FileSystemStorage</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$storage</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
@@ -346,32 +469,41 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_handle">
-        handle()
-        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#method_handle" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_execute">
+        execute()
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_execute" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPHandler.php"><a href="files/src-helper-blockiphandler.html"><abbr title="src/Helper/BlockIPHandler.php">BlockIPHandler.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCli.php"><a href="files/src-helper-blockipcli.html"><abbr title="src/Helper/BlockIPCli.php">BlockIPCli.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">49</span>
+    <span class="phpdocumentor-element-found-in__line">72</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Helper in handler form to unblock IP or remove record from block list.</p>
+        <p class="phpdocumentor-summary">Execute CLI helper.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">handle</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$request</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">execute</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Console\Input\InputInterface">InputInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Console\Output\OutputInterface">OutputInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$output</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$request</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr></span>
+                <span class="phpdocumentor-signature__argument__name">$input</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Console\Input\InputInterface">InputInterface</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Server request object</p>
+                    <section class="phpdocumentor-description"><p>CLI input reference.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$output</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Console\Output\OutputInterface">OutputInterface</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>CLI output reference.</p>
 </section>
 
             </dd>
@@ -380,11 +512,44 @@
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span>
+    <span class="phpdocumentor-signature__response_type">int</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>Response with process message.</p>
+            <section class="phpdocumentor-description"><p>Result of process.</p>
 </section>
 
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_configure">
+        configure()
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_configure" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCli.php"><a href="files/src-helper-blockipcli.html"><abbr title="src/Helper/BlockIPCli.php">BlockIPCli.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">59</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Configure argument for CLI command.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">configure</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+        
     
 </article>
                     <article
@@ -395,29 +560,31 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_addBlacklist">
         addBlacklist()
-        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#method_addBlacklist" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_addBlacklist" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPHandler.php"><a href="files/src-helper-blockiphandler.html"><abbr title="src/Helper/BlockIPHandler.php">BlockIPHandler.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCli.php"><a href="files/src-helper-blockipcli.html"><abbr title="src/Helper/BlockIPCli.php">BlockIPCli.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">93</span>
+    <span class="phpdocumentor-element-found-in__line">136</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Add IP to blacklist if not exists yet.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">addBlacklist</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">addBlacklist</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span>
+    <span class="phpdocumentor-signature__response_type">int</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>Add blacklist process result.</p>
+</section>
+
     
 </article>
                     <article
@@ -428,29 +595,31 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_addWhitelist">
         addWhitelist()
-        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#method_addWhitelist" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_addWhitelist" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPHandler.php"><a href="files/src-helper-blockiphandler.html"><abbr title="src/Helper/BlockIPHandler.php">BlockIPHandler.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCli.php"><a href="files/src-helper-blockipcli.html"><abbr title="src/Helper/BlockIPCli.php">BlockIPCli.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">115</span>
+    <span class="phpdocumentor-element-found-in__line">170</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Add IP to whitelist if not exists yet.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">addWhitelist</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">addWhitelist</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span>
+    <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>Add whitelist process result.</p>
+</section>
+
     
 </article>
                     <article
@@ -461,29 +630,31 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_deleteBlacklist">
         deleteBlacklist()
-        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#method_deleteBlacklist" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_deleteBlacklist" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPHandler.php"><a href="files/src-helper-blockiphandler.html"><abbr title="src/Helper/BlockIPHandler.php">BlockIPHandler.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCli.php"><a href="files/src-helper-blockipcli.html"><abbr title="src/Helper/BlockIPCli.php">BlockIPCli.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">104</span>
+    <span class="phpdocumentor-element-found-in__line">153</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Delete IP from blacklist.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">deleteBlacklist</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">deleteBlacklist</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span>
+    <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>Delete blacklist process result.</p>
+</section>
+
     
 </article>
                     <article
@@ -494,29 +665,66 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_deleteWhitelist">
         deleteWhitelist()
-        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#method_deleteWhitelist" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_deleteWhitelist" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPHandler.php"><a href="files/src-helper-blockiphandler.html"><abbr title="src/Helper/BlockIPHandler.php">BlockIPHandler.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCli.php"><a href="files/src-helper-blockipcli.html"><abbr title="src/Helper/BlockIPCli.php">BlockIPCli.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">126</span>
+    <span class="phpdocumentor-element-found-in__line">187</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Delete IP from whitelist.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">deleteWhitelist</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">deleteWhitelist</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></span>
+    <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>Delete whitelist process result.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_help">
+        help()
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_help" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Helper/BlockIPCli.php"><a href="files/src-helper-blockipcli.html"><abbr title="src/Helper/BlockIPCli.php">BlockIPCli.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">117</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Show help information.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">help</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">int</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Always return 0 or Command::SUCCESS</p>
+</section>
+
     
 </article>
             </section>
@@ -597,7 +805,7 @@
 </section>
             </div>
         </div>
-        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandler.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 
