@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Blog IP CLI helper
+ * Block IP CLI helper
  */
 class BlockIPCli extends Command
 {
@@ -44,7 +44,18 @@ class BlockIPCli extends Command
      * 
      */
     public function __construct (
+        /**
+         * Assoc array library configuration.
+         * 
+         * @var array $config
+         */
         private array $config,
+
+        /**
+         * File system storage instance.
+         * 
+         * @var FileSystemStorage $storage
+         */
         private FileSystemStorage $storage
     )
     {
