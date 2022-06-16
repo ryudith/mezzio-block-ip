@@ -10,9 +10,10 @@ namespace Ryudith\MezzioBlockIp\Helper;
 use Laminas\Diactoros\Response\TextResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Ryudith\MezzioBlockIp\Storage\FileSystemStorage;
 
-class BlockIPHandler 
+class BlockIPHandler implements RequestHandlerInterface
 {
     /**
      * Initialize by clean 'blacklist_data_dir' path value.
