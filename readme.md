@@ -3,7 +3,7 @@
 **`Ryudith\MezzioBlockIp`** is middleware to block IP based on request.
 
 > Version 1.1.0 remove code auto register route when helper configuration is enable (`enable_helper`) also remove `enable_helper` from configuration and add CLI helper version.   
-> So to enable helper please read [enable helper](#enable_helper) below.
+> To enable helper please read [enable helper](#enable_helper) below.
 
 ## **Installation**
 
