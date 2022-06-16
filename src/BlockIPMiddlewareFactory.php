@@ -13,6 +13,9 @@ use Mezzio\Application;
 use Psr\Http\Message\ServerRequestInterface;
 use Ryudith\MezzioBlockIp\Helper\BlockIPHandler;
 
+/**
+ * Block IP factory
+ */
 class BlockIPMiddlewareFactory
 {
     /**
@@ -26,18 +29,6 @@ class BlockIPMiddlewareFactory
         $config = $container->get('config')['mezzio_block_ip'];
         $storage = $container->get($config['ip_storage_class']);
         $response = $container->get($config['ip_response_class']);
-
-        if ($config['enable_helper'])
-        {
-            $app = $container->get(Application::class);
-            $helper = new BlockIPHandler($config, $storage);
-            $app->any($config['blacklist_uri_path'], function (ServerRequestInterface $request) use ($helper) {
-                return $helper->handle($request);
-            });
-            $app->any($config['whitelist_uri_path'], function (ServerRequestInterface $request) use ($helper) {
-                return $helper->handle($request);
-            });
-        }
 
         return new BlockIPMiddleware($config, $storage, $response);
     }

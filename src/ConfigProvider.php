@@ -28,14 +28,6 @@ use Ryudith\MezzioBlockIp\Storage\FileSystemStorageFactory;
  * 8. ip_storage_class     : Class name for custom storage implementation.
  * 9. ip_response_class    : Class name for custom response implementation.
  * 10. admin_whitelist_ip  : Permanent whitelist IP for administration or testing use.
- * 11. enable_helper       : Flag to enable blacklist or whitelist helper.
- * 12. helper_url_param_op : Define field query parameter for operation helper, 
- *                           the avaiable operations is 'add' and 'delete' for both blacklist and whitelist helper.
- *                           ('op' part in 'http://localhost:8080/blockip/blacklist?op=add&ip=192.168.12.12').
- * 13. helper_url_param_ip : Define field query parameter for IP data, the value must a valid IP data format.
- *                           ('ip' part in 'http://localhost:8080/blockip/blacklist?op=add&ip=192.168.12.12').
- * 14. blacklist_uri_path  : URI path access for blacklist helper from browser (don't forget whitelist the IP to access this).
- * 15. whitelist_uri_path  : URI path access for whitelist helper from browser (don't forget whitelist the IP to access this).
  */
 class ConfigProvider
 {
@@ -60,12 +52,6 @@ class ConfigProvider
                 'ip_storage_class' => FileSystemStorage::class,
                 'ip_response_class' => SimpleResponse::class,
                 'admin_whitelist_ip' => [],
-                
-                'enable_helper' => false,
-                'helper_url_param_op' => 'op',
-                'helper_url_param_ip' => 'ip',
-                'blacklist_uri_path' => '/blockip/blacklist',
-                'whitelist_uri_path' => '/blockip/whitelist',
             ],
         ];
     }
