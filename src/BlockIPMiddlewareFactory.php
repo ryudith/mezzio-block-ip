@@ -30,18 +30,6 @@ class BlockIPMiddlewareFactory
         $storage = $container->get($config['ip_storage_class']);
         $response = $container->get($config['ip_response_class']);
 
-        if ($config['enable_helper'])
-        {
-            $app = $container->get(Application::class);
-            $helper = new BlockIPHandler($config, $storage);
-            $app->any($config['blacklist_uri_path'], function (ServerRequestInterface $request) use ($helper) {
-                return $helper->handle($request);
-            });
-            $app->any($config['whitelist_uri_path'], function (ServerRequestInterface $request) use ($helper) {
-                return $helper->handle($request);
-            });
-        }
-
         return new BlockIPMiddleware($config, $storage, $response);
     }
 }
