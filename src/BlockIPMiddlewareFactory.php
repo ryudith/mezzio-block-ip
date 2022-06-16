@@ -13,6 +13,9 @@ use Mezzio\Application;
 use Psr\Http\Message\ServerRequestInterface;
 use Ryudith\MezzioBlockIp\Helper\BlockIPHandler;
 
+/**
+ * Block IP factory
+ */
 class BlockIPMiddlewareFactory
 {
     /**
