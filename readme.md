@@ -1,7 +1,9 @@
 # **mezzio-block-ip**
 
-**`Ryudith\MezzioBlockIp`** is middleware to block IP based on request limit.
+**`Ryudith\MezzioBlockIp`** is middleware to block IP based on request.
 
+> Version 1.1.0 remove code auto register route when helper configuration is enable (`enable_helper`) also remove `enable_helper` from configuration and add CLI helper version.   
+> So to enable helper please read [enable helper](#enable_helper) below.
 
 ## **Installation**
 
@@ -93,21 +95,15 @@ return [
     ],
     'mezzio_block_ip' => [
         'limit_hit' => 100,
-        'limit_duration' => 60,  // value in second, 60 mean limit_hit in 60 second
-        'request_real_ip_key' => 'REMOTE_ADDR',  // key for $_ENV or $_SERVER to get request real ip
+        'limit_duration' => 60,
+        'request_real_ip_key' => 'REMOTE_ADDR',
         'ip_data_dir' => './data/blockip',
         'blacklist_data_dir' => './data/blacklistip',
         'whitelist_data_dir' => './data/whitelistip',
         'file_data_delimiter' => '||',
         'ip_storage_class' => FileSystemStorage::class,
         'ip_response_class' => SimpleResponse::class,
-        'admin_whitelist_ip' => [],  // whitelist IPs for admin access to unblock IP
-        
-        'enable_helper' => false,
-        'helper_url_param_op' => 'op',  // URL param key for operation helper
-        'helper_url_param_ip' => 'ip',  // URL param key for IP data
-        'blacklist_uri_path' => '/blockip/blacklist',
-        'whitelist_uri_path' => '/blockip/whitelist',
+        'admin_whitelist_ip' => []
     ],
 ];
 
@@ -147,23 +143,95 @@ Detail :
 9. **`admin_whitelist_ip`**  
  is string array whitelist permanent IP for admin.
 
-10. **`enable_helper`**  
- is flag to enable helper locate inside **`Ryudith\MezzioBlockIp\Helper`**.
+## <a name="enable_helper">Enable Helper</a>
 
-8. **`helper_url_param_op`**  
- is URL query parameter key for helper operation. Default '**op**' and the options is '**add**' or '**delete**'.
+To enable helper add the following items to `factories` configuration (usually in `config/dependencies.global.php`) : 
 
-9. **`helper_url_param_ip`**  
+```php
+
+...
+
+'factories' => [
+    
+    ...
+    
+    // add this to enable web version helper
+    Ryudith\MezzioBlockIp\Helper\BlockIPHandler::class => \Ryudith\MezzioBlockIp\Helper\BlockIPHandlerFactory::class,
+
+    // add this to enable cli version helper
+    Ryudith\MezzioBlockIp\Helper\BlockIPCli::class => \Ryudith\MezzioBlockIp\Helper\BlockIPCliFactory::class,
+
+    ...
+]
+
+...
+
+```
+
+Then for web helper register helper to `routes.php`  
+ 
+```php
+$app->get('/blockip/blacklist', Ryudith\MezzioBlockIp\Helper\BlockIPHandler::class);
+$app->get('/blockip/whitelist', Ryudith\MezzioBlockIp\Helper\BlockIPHandler::class);
+```
+
+> Make sure your `blacklist_uri_path` and `whitelist_uri_path` value is match to your route path.
+
+For web helper you can change default configuration values as listed below by add array key to `mezzio_block_ip` configuration, also **don't forget** to add your IP to whitelist to be able access helper.
+
+1. **`helper_url_param_op`**  
+ is URL query parameter key for helper operation. Default '**op**' and the option value is '**add**' or '**delete**'.
+
+2. **`helper_url_param_ip`**  
  is URL query parameter key for helper data IP, default value '**ip**'.
 
-10. **`blacklist_uri_path`**  
+3. **`blacklist_uri_path`**  
  is URI path for blacklist helper operation.
 
-11. **`whitelist_uri_path`**  
+4. **`whitelist_uri_path`**  
  is URI path for whitelist helper operation.
 
-> For example if **enable_helper** is enable (value 'true') you can use helper from URL **http://localhost:8080/blockip/blacklist?op=add&ip=192.168.0.12** to add IP '192.168.0.12' to blacklist.  
+> ### Change default configuration web helper value  
+> Create new file `config/autoload/blockip.local.php` and add :
+> ```php
+>
+> <?php
+>
+> declare(strict_types=1);
+>
+> return [
+>    'mezzio_block_ip' => [
+>        'helper_url_param_op' => 'operation',
+>        'helper_url_param_ip' => 'userip',
+>        'blacklist_uri_path' => '/blockip/blacklist',
+>        'whitelist_uri_path' > '/blockip/whitelist',
+>    ],
+> ];
+>
+> ```
+> 
+> Then you can access helper with URL **http://localhost:8080/blockip/blacklist?operation=add&ip=userip.168.0.12** with your whitelist IP.
+  
+  
+For CLI helper you need to register helper command to `laminas-cli commands` configuration usually locate in file `config/autoload/mezzio.global.php` :
 
+```php
+
+...
+
+'laminas-cli' => [
+        'commands' => [
+            ...
+            'your:command' => Ryudith\MezzioBlockIp\Helper\BlockIPCli::class,
+            ...
+        ],
+    ],
+
+...
+
+```
+
+> Change `your:command` to your own choice command.
 
 ## Documentation
 

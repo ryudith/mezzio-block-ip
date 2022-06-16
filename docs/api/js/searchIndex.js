@@ -33,7 +33,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Ryudith\\MezzioBlockIp\\BlockIPMiddlewareFactory",
             "name": "BlockIPMiddlewareFactory",
-            "summary": "",
+            "summary": "Block\u0020IP\u0020factory",
             "url": "classes/Ryudith-MezzioBlockIp-BlockIPMiddlewareFactory.html"
         },                {
             "fqsen": "\\Ryudith\\MezzioBlockIp\\BlockIPMiddlewareFactory\u003A\u003A__invoke\u0028\u0029",
@@ -290,6 +290,96 @@ Search.appendIndex(
             "name": "isValid",
             "summary": "Check\u0020request\u0020is\u0020still\u0020valid\u0020request\u0020based\u0020record\u0020data.",
             "url": "classes/Ryudith-MezzioBlockIp-Storage-StorageInterface.html#method_isValid"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCli",
+            "name": "BlockIPCli",
+            "summary": "Blog\u0020IP\u0020CLI\u0020helper",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCli\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method___construct"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCli\u003A\u003Aconfigure\u0028\u0029",
+            "name": "configure",
+            "summary": "Configure\u0020argument\u0020for\u0020CLI\u0020command.",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_configure"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCli\u003A\u003Aexecute\u0028\u0029",
+            "name": "execute",
+            "summary": "Execute\u0020CLI\u0020helper.",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_execute"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCli\u003A\u003Ahelp\u0028\u0029",
+            "name": "help",
+            "summary": "Show\u0020help\u0020information.",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_help"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCli\u003A\u003AaddBlacklist\u0028\u0029",
+            "name": "addBlacklist",
+            "summary": "Add\u0020IP\u0020to\u0020blacklist\u0020if\u0020not\u0020exists\u0020yet.",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_addBlacklist"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCli\u003A\u003AdeleteBlacklist\u0028\u0029",
+            "name": "deleteBlacklist",
+            "summary": "Delete\u0020IP\u0020from\u0020blacklist.",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_deleteBlacklist"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCli\u003A\u003AaddWhitelist\u0028\u0029",
+            "name": "addWhitelist",
+            "summary": "Add\u0020IP\u0020to\u0020whitelist\u0020if\u0020not\u0020exists\u0020yet.",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_addWhitelist"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCli\u003A\u003AdeleteWhitelist\u0028\u0029",
+            "name": "deleteWhitelist",
+            "summary": "Delete\u0020IP\u0020from\u0020whitelist.",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#method_deleteWhitelist"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCli\u003A\u003A\u0024input",
+            "name": "input",
+            "summary": "Reference\u0020to\u0020input\u0020instance.",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#property_input"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCli\u003A\u003A\u0024output",
+            "name": "output",
+            "summary": "Reference\u0020to\u0020outout\u0020instance.",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#property_output"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCli\u003A\u003A\u0024processResultMessage",
+            "name": "processResultMessage",
+            "summary": "Detail\u0020message\u0020about\u0020process\u0020result.",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#property_processResultMessage"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCli\u003A\u003A\u0024config",
+            "name": "config",
+            "summary": "",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#property_config"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCli\u003A\u003A\u0024storage",
+            "name": "storage",
+            "summary": "",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCli.html#property_storage"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCliFactory",
+            "name": "BlockIPCliFactory",
+            "summary": "BlockIPCli\u0020factory\u0020class.",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCliFactory.html"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPCliFactory\u003A\u003A__invoke\u0028\u0029",
+            "name": "__invoke",
+            "summary": "Factory\u0020to\u0020create\u0020BlockIPCli\u0020instance.",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPCliFactory.html#method___invoke"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPHandlerFactory",
+            "name": "BlockIPHandlerFactory",
+            "summary": "Block\u0020IP\u0020web\u0020helper\u0020handler\u0020factory.",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandlerFactory.html"
+        },                {
+            "fqsen": "\\Ryudith\\MezzioBlockIp\\Helper\\BlockIPHandlerFactory\u003A\u003A__invoke\u0028\u0029",
+            "name": "__invoke",
+            "summary": "Factory\u0020to\u0020create\u0020BlockIP\u0020object,\u0020Mezzio\u0020convention.",
+            "url": "classes/Ryudith-MezzioBlockIp-Helper-BlockIPHandlerFactory.html#method___invoke"
         },                {
             "fqsen": "\\",
             "name": "\\",
